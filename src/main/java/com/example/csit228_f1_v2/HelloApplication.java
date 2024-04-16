@@ -98,15 +98,20 @@ public class HelloApplication extends Application {
         btnShow.setOnMouseExited(release);
         grid.add(btnShow, 2,2);
 
-        Button btnLogin = new Button("Log In");
+        Button btnLogin = new Button("Register");
         btnLogin.setFont(Font.font(40));
         grid.add(btnLogin, 0, 3, 2, 1);
+
+        CRUD op = new CRUD();
 
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                String username = tfUsername.getText();
+                String password = pfPassword.getText();
                 System.out.println("Hello");
                 try {
+                    op.insertData(username, password);
                     Parent p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
                     Scene s = new Scene(p);
                     stage.setScene(s);
